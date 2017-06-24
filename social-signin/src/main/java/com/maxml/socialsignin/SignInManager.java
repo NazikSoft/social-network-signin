@@ -14,12 +14,8 @@ import com.maxml.socialsignin.helpers.GplusHelper;
 import com.maxml.socialsignin.helpers.SocialNetworkHelper;
 import com.maxml.socialsignin.helpers.TwitterHelper;
 import com.maxml.socialsignin.util.SignInConstants;
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
 
 import java.util.ArrayList;
-
-import io.fabric.sdk.android.Fabric;
 
 /**
  * Manager class for all work with all social networks
@@ -41,12 +37,7 @@ public class SignInManager {
         helpers = new ArrayList<>();
     }
 
-    public void onCreateApplication(Application application, String twitterKey,
-                                    String twitterConsumerSecret) {
-
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(twitterKey, twitterConsumerSecret);
-        Fabric.with(application, new Twitter(authConfig));
-
+    public void onCreateApplication(Application application) {
         /*
          * Initialize the Facebook SDK before executing any other operations,
          * especially, if you're using Facebook UI elements.
@@ -72,8 +63,7 @@ public class SignInManager {
      * Creates listener for Facebook.
      */
     public void configureSocialHelpers() {
-        for (SocialNetworkHelper h :
-                helpers) {
+        for (SocialNetworkHelper h : helpers) {
             h.init();
         }
     }

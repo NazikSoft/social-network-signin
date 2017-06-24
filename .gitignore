@@ -34,7 +34,14 @@ captures/
 
 # Intellij
 *.iml
-.idea/workspace.xml
+.idea/
 
 # Keystore files
 *.jks
+
+# Keys
+app/fabric.properties
+app/google-services.json
+lib/google-services.json
+lib/fabric.properties
+app/src/main/res/values/strings-keys.xml

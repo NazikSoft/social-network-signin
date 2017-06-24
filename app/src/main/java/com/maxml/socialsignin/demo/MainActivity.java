@@ -31,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         manager.configureSocialHelpers();
+        manager.getNeededSocialHelper(SignInConstants.AccountType.TWITTER).init(
+                getString(R.string.twitter_api_key),
+                getString(R.string.twitter_secret_key)
+        );
 
         findViewById(R.id.twitter_design_button).setOnClickListener(new View.OnClickListener() {
             @Override

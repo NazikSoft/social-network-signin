@@ -13,7 +13,6 @@ public class DemoApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        SignInManager.getManager().onCreateApplication(this, "Twitter consumer key",
-                "Twitter secret key");
+        SignInManager.getManager().onCreateApplication(this);
     }
 }

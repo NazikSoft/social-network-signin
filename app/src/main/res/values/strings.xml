@@ -2,7 +2,6 @@
     <string name="app_name">Demo</string>
     <string name="action_settings">Settings</string>
 
-    <string name="facebook_app_id">Your facebook application id</string>
     <string name="success_logout">Success logout!</string>
 
 </resources>
