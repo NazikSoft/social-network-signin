@@ -1,15 +1,8 @@
 apply plugin: 'com.android.application'
 
-repositories {
-    maven {
-        url 'https://dl.bintray.com/maxml/maven/'
-    }
-}
-
-
 android {
-    compileSdkVersion 24
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 25
+    buildToolsVersion '26.0.0'
 
     defaultConfig {
         applicationId "com.maxml.socialsignin.demo"
@@ -27,13 +20,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-//    compile project(path: ':social-signin')
-
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //    compile project(path: ':social-signin')
     testCompile 'junit:junit:4.12'
-
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:design:24.2.1'
-
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
     compile 'com.maxml.socialsignin:social-signin:0.1'
 }
