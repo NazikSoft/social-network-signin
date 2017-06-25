@@ -24,7 +24,7 @@ import com.twitter.sdk.android.core.services.AccountService;
 import retrofit2.Call;
 
 /**
- * Extends {@see SocialNetworkHelper}.
+ * Extends {@link SocialNetworkHelper}.
  * Helper class for Twitter Sign In functionality.
  *
  * @see <a href="https://dev.twitter.com/twitterkit/android/overview">Twitter Sign In Manual</a>

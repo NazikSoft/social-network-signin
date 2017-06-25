@@ -15,7 +15,7 @@ import com.maxml.socialsignin.entity.SignInUser;
 import com.maxml.socialsignin.util.SignInConstants;
 
 /**
- * Extends {@see SocialNetworkHelper}.
+ * Extends {@link SocialNetworkHelper}.
  * Helper class for Facebook Sign In functionality.
  *
  * @see <a href="https://developers.facebook.com/quickstarts/?platform=android">Facebook Sign In Manual</a>

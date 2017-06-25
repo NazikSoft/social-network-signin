@@ -11,6 +11,32 @@ apply plugin: 'com.android.library'
 apply plugin: 'io.fabric'
 apply plugin: 'com.google.gms.google-services'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'social-signin'
+
+    publishedGroupId = 'com.maxml.socialsignin'
+    libraryName = 'Social Signin'
+    artifact = 'social-signin'
+
+    libraryDescription = 'Library can sign in with Google, Facebook, Twitter witout any problems with this library.\n' +
+            '\n' +
+            'Connect library project and use like black box! '
+
+    siteUrl = 'https://github.com/maxml/social-network-signin'
+    gitUrl = 'https://github.com/maxml/social-network-signin.git'
+
+    libraryVersion = '0.1'
+
+    developerId = 'maxml'
+    developerName = 'Maksym Liashenko'
+    developerEmail = 'maxml@inbox.ru'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
@@ -44,3 +70,6 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:4.+'
     compile 'com.google.android.gms:play-services-auth:8.3.0'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

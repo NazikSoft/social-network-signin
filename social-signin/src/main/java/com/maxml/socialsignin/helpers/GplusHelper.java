@@ -20,7 +20,7 @@ import com.maxml.socialsignin.entity.SignInUser;
 import com.maxml.socialsignin.util.SignInConstants;
 
 /**
- * Extends {@see SocialNetworkHelper}.
+ * Extends {@link SocialNetworkHelper}.
  * Helper class for Google Sign In functionality.
  *
  * @see <a href="https://developers.google.com/identity/sign-in/android/start-integrating">
