@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.maxml.socialsignin.SignInManager;
 import com.maxml.socialsignin.entity.SignInUser;
+import com.maxml.socialsignin.helpers.FacebookHelper;
 import com.maxml.socialsignin.util.SignInConstants;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,7 +68,11 @@ public class MainActivity extends AppCompatActivity {
                 updateViews();
             }
         });
+    }
 
+    private void checkFacebookSHAKey() {
+        String fbKeyHash = FacebookHelper.getKeyHash(this);
+        Toast.makeText(this, "Fb key hash = " + fbKeyHash, Toast.LENGTH_SHORT).show();
     }
 
     @Override

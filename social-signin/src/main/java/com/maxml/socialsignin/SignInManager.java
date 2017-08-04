@@ -88,8 +88,7 @@ public class SignInManager {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        for (SocialNetworkHelper h :
-                helpers) {
+        for (SocialNetworkHelper h : helpers) {
             h.onActivityResult(requestCode, resultCode, data);
         }
     }
