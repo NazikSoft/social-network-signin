@@ -24,7 +24,14 @@ public abstract class SocialNetworkHelper {
     /**
      * Initial functionality, what must be loaded before user sign in
      */
-    public abstract void init();
+    public void init() {
+    }
+
+    /**
+     * Initial functionality, what must be loaded before user sign in
+     */
+    public void init(String... configs) {
+    }
 
     /**
      * Method, that execute some code from result intent from social network server

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.maxml.socialsignin.SignInManager;
 import com.maxml.socialsignin.entity.SignInUser;
+import com.maxml.socialsignin.helpers.FacebookHelper;
 import com.maxml.socialsignin.util.SignInConstants;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         manager.configureSocialHelpers();
+        manager.getNeededSocialHelper(SignInConstants.AccountType.TWITTER).init(
+                getString(R.string.twitter_api_key),
+                getString(R.string.twitter_secret_key)
+        );
 
         findViewById(R.id.twitter_design_button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +68,11 @@ public class MainActivity extends AppCompatActivity {
                 updateViews();
             }
         });
+    }
 
+    private void checkFacebookSHAKey() {
+        String fbKeyHash = FacebookHelper.getKeyHash(this);
+        Toast.makeText(this, "Fb key hash = " + fbKeyHash, Toast.LENGTH_SHORT).show();
     }
 
     @Override

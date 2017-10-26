@@ -1,8 +1,14 @@
 package com.maxml.socialsignin.helpers;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.util.Log;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -14,8 +20,11 @@ import com.facebook.login.widget.LoginButton;
 import com.maxml.socialsignin.entity.SignInUser;
 import com.maxml.socialsignin.util.SignInConstants;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
- * Extends {@see SocialNetworkHelper}.
+ * Extends {@link SocialNetworkHelper}.
  * Helper class for Facebook Sign In functionality.
  *
  * @see <a href="https://developers.facebook.com/quickstarts/?platform=android">Facebook Sign In Manual</a>
@@ -32,6 +41,37 @@ public class FacebookHelper extends SocialNetworkHelper {
         super(callback, activity);
 
         setType(SignInConstants.AccountType.FACEBOOK);
+    }
+
+    /**
+     * https://github.com/maxml/social-network-signin/issues/4
+     * Provides key hash SHA1 for facebook console
+     * Also, your hash could be found in LogCat with tag "facebook_tag"
+     *
+     * @param activity your activity with your credentials
+     * @return SHA1 key that you can use for API console, null otherwise
+     */
+    public static String getKeyHash(Activity activity) {
+        try {
+            PackageInfo info = activity.getPackageManager().getPackageInfo(
+                    activity.getApplicationContext().getPackageName(),
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+
+                String res = Base64.encodeToString(md.digest(), Base64.DEFAULT);
+                Log.d("facebook_tag", "KeyHash:" + res);
+
+                // avoiding \n in the end of the line
+                return res.replace(System.getProperty("line.separator"), "");
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
@@ -84,7 +124,7 @@ public class FacebookHelper extends SocialNetworkHelper {
     @Override
     public void logout() {
         LoginManager.getInstance().logOut();
-        
+
         getCallback().sendEmptyMessage(SignInConstants.HANDLER_LOGOUT_ACTION);
     }
 
